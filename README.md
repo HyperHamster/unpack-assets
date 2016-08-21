@@ -8,27 +8,42 @@ Especially so for servers, since Starbound requires you to unpack every workshop
 
 ###Default Behavior
 
-Given no arguments and no options (Bash) or switches (Batch), the script simply unpacks Starbound's base assets located at `Starbound/assets/packed.pak` to `Starbound/_UnpackedAssets`.
+Given no arguments and no options/switches, the script simply unpacks Starbound's base assets located at `Starbound/assets/packed.pak` to `Starbound/_UnpackedAssets`.
 
 This is useful for Starbound modding which requires an up-to-date unpacked version of Starbound's base assets. Especially for those developing mods for the nightly or unstable builds of Starbound.
 
 ###Single Argument Behavior
 
-Given a single argument and no options (Bash) or switches (Batch), the script assumes that the argument is a Starbound Steam Workshop ID. It looks within the Starbound's Steam workshop directory, finds that mod's `.pak` file and unpacks it to `Starbound/mods/(Mod ID)` 
+Given a single argument and no options/switches, the script assumes that the argument is a Starbound Steam Workshop ID. It looks within the Starbound's Steam workshop directory, finds that mod's `.pak` file and unpacks it to `Starbound/mods/(Mod ID)` 
 
 This is useful because unpacking a mod and learning how it works by looking at it's files is a great way to learn Starbound modding.
 
 ###Multiple Argument Behavior
 
-Given multiple arguments and no options (Bash) or switches (Batch), the script only recognizes the first argument and therefore functions the same as if there were only a single argument (see above).
+Given multiple arguments and no options/switches, the script only recognizes the first argument and therefore functions the same as if there were only a single argument (see above).
 
-###A Option/Switch Behavior
+###Options & Switches
 
-Given no arguments and the `-a` option (Bash) or `/a` switch (Batch), the script will unpack every single installed workshop mod to `Starbound/mods/(Mod ID)`.
+Given no arguments and the `-a` option (.sh) or `/a` switch (.bat), the script will unpack every single installed workshop mod to `Starbound/mods/(Mod ID)`.
 
-Example:
+Examples:
 ```
 $ ./unpack-assets.sh -a
+Unpacking 000000001's assets...
+Done.
+Unpacking 000000002's assets...
+Done.
+Unpacking 000000003's assets...
+Done.
+Finished unpacking 3 mod(s).
+```
+```
+> unpack-assets.bat /a
+1: Select default 64-bit system Steam library location (C:\Program Files (x86)\Steam).
+2: Select default 32-bit system Steam library location (C:\Program Files\Steam).
+3: Enter your own custom Steam library location.
+Q: Quit.
+1
 Unpacking 000000001's assets...
 Done.
 Unpacking 000000002's assets...
@@ -40,10 +55,15 @@ Finished unpacking 3 mod(s).
 
 This is incredibly useful for updating modded Starbound servers as they cannot load mods from Starbound's Steam workshop directory. This is very important because if servers do not keep their mods up-to-date, it could very likely cause clients to crash.
 
-###H/? Option/Switch Behavior
-
 ###Note on Differences Between Bash and Batch Versions
 
-Since Batch is an old and decrepid scripting language it must prompt the user each time asking where their Steam library directory is located since no functionality exists to find it automatically and it's not in a reliably predicatable location because of the differences in Steam's default installation directory between 32-bit and 64-bit versions of Windows. Plus the user could be using an alternative Steam library directory of their own creation to store Starbound's files.
+Since Batch is an old and decrepid scripting language it must prompt the user each time asking where their Steam library directory is located since no functionality exists to find it automatically and it's not in a reliably predicatable location because of the differences in Steam's default installation directory between 32-bit and 64-bit versions of Windows.
 
-The Bash version will check for the existance of Steam's default installation directory. If it's not found it will automatically search for Steam library directories within the user's home directory, displaying a list of it's findings for the user to select from.
+The Bash version however, will check for the existence of Steam's default installation directory (~/.local/Share/Steam). If found, it will not prompt the user. If not found, it will automatically search for Steam library directories within the user's home directory, and prompt the user with a list of it's findings which the user must select from.
+
+#1
+##2
+###3
+####4
+#####5
+######6

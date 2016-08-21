@@ -8,10 +8,9 @@ set mode=:unpack_workshop
 
 :choice
 
-echo 1: Select default 64-bit system Steam Library location (C:\Program Files (x86)\Steam).
-echo 2: Select default 32-bit system Steam Library location (C:\Program Files\Steam).
-echo 3: Enter your own custom Steam Library location.
-echo K: Select Kirby^'s Steam Library location (D:\Windows\Steam Games).
+echo 1: Select default 64-bit system Steam library location (C:\Program Files (x86)\Steam).
+echo 2: Select default 32-bit system Steam library location (C:\Program Files\Steam).
+echo 3: Enter your own custom Steam library location.
 echo Q: Quit.
 
 choice /c:Q123K /n
