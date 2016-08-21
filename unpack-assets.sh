@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ! -d "$HOME/.local/share/Scunt" ]]; then
+if [[ ! -d "$HOME/.local/share/Steam" ]]; then
     echo "Default Steam Library directory not present on your system."
     echo "Searching for Steam Library directories within your home directory..."
     
