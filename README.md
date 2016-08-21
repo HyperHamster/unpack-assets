@@ -60,10 +60,3 @@ This is incredibly useful for updating modded Starbound servers as they cannot l
 Since Batch is an old and decrepid scripting language it must prompt the user each time asking where their Steam library directory is located since no functionality exists to find it automatically and it's not in a reliably predicatable location because of the differences in Steam's default installation directory between 32-bit and 64-bit versions of Windows.
 
 The Bash version however, will check for the existence of Steam's default installation directory (~/.local/Share/Steam). If found, it will not prompt the user. If not found, it will automatically search for Steam library directories within the user's home directory, and prompt the user with a list of it's findings which the user must select from.
-
-#1
-##2
-###3
-####4
-#####5
-######6
