@@ -4,19 +4,33 @@ This shell script is designed to ease and speed up the unpacking of Starbound as
 
 Especially so for servers, since Starbound requires you to unpack every workshop mod to your local mods folder for them to actually load. Using this script, accomplishing that task only requires a single command.
 
-###Default Behavior
+###Usage
+
+#####Default Behavior
 
 Given no arguments and no options/switches, the script simply unpacks Starbound's base assets located at `Starbound/assets/packed.pak` to `Starbound/_UnpackedAssets`.
 
+Examples:
+```
+$ ./unpack-assets.sh
+Unpacking Starbound's assets...
+Done.
+```
+```
+> unpack-assets.bat
+Unpacking Starbound's assets...
+Done.
+```
+
 This is useful for Starbound modding which requires an up-to-date unpacked version of Starbound's base assets. Especially for those developing mods for the nightly or unstable builds of Starbound.
 
-###Single Argument Behavior
+#####Single Argument Behavior
 
 Given a single argument and no options/switches, the script assumes that the argument is a Starbound Steam Workshop ID. It looks within the Starbound's Steam workshop directory, finds that mod's `.pak` file and unpacks it to `Starbound/mods/(Mod ID)` 
 
 This is useful because unpacking a mod and learning how it works by looking at it's files is a great way to learn Starbound modding.
 
-###Multiple Argument Behavior
+#####Multiple Argument Behavior
 
 Given multiple arguments and no options/switches, the script only recognizes the first argument and therefore functions the same as if there were only a single argument (see above).
 
