@@ -36,14 +36,19 @@ else
     steam_library="$HOME/.local/share/Steam"
 fi
 
-while getopts ":haHA" opt; do
+while getopts ":haHAuU" opt; do
     case $opt in
         h|H) hflag=1;;
         a|A) aflag=1;;
+        u|U) uflag=1;;
     esac
 done
 
-starbound="$steam_library/steamapps/common/Starbound"
+if [[ uflag -eq 1 ]]; then
+    starbound="$steam_library/steamapps/common/Starbound - Unstable"
+else
+    starbound="$steam_library/steamapps/common/Starbound"
+fi
 starbound_workshop="$steam_library/steamapps/workshop/content/211820"
 unpack="$starbound/linux/asset_unpacker"
 starbound_assets="$starbound/assets/packed.pak"
@@ -117,7 +122,7 @@ print_help() {
 }
 
 if [[ $hflag -eq 1 ]]; then print_help; fi
-if [[ $# -eq 0 ]]; then unpack_starbound; fi
+if [[ $# -eq 0 || uflag -eq 1 ]]; then unpack_starbound; fi
 if [[ $aflag -eq 1 ]]; then unpack_workshop_all; fi
 unpack_workshop $1
 exit 0

@@ -2,6 +2,8 @@
 
 if "%*"=="/?" goto :help
 if "%*"=="" set mode=:unpack_starbound&& goto :choice
+if "%*"=="/u" set uflag=1&& set mode=:unpack_starbound&& goto :choice
+if "%*"=="/U" set uflag=1&& set mode=:unpack_starbound&& goto :choice
 if "%*"=="/a" set mode=:unpack_workshop_all&& goto :choice
 if "%*"=="/A" set mode=:unpack_workshop_all&& goto :choice
 set mode=:unpack_workshop
@@ -28,7 +30,11 @@ set steam_library=%user_input%
 
 :begin
 
-set starbound=%steam_library%\steamapps\common\Starbound
+if "%uflag%"=="1" (
+    set starbound=%steam_library%\steamapps\common\Starbound - Unstable
+) else (
+    set starbound=%steam_library%\steamapps\common\Starbound
+)
 set starbound_workshop=%steam_library%\steamapps\workshop\content\211820
 set unpack=%starbound%\win32\asset_unpacker.exe
 set starbound_assets=%starbound%\assets\packed.pak
