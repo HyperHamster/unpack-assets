@@ -33,6 +33,23 @@ This is useful for Starbound modding which requires an up-to-date unpacked versi
 
 Given an argument, the script assumes that the argument is a Starbound Steam workshop mod ID. It then looks within Starbound's Steam workshop directory, finds that mod's assets, and unpacks them to `Starbound/mods/(mod ID)`. If the script finds that the assets have been unpacked previously, it will delete the older version before unpacking.
 
+Examples:
+```
+$ ./unpack-assets.sh 000000001
+Unpacking 000000001's assets...
+Done.
+```
+```
+> unpack-assets.bat 000000001
+1: Select default 64-bit system Steam library location (C:\Program Files (x86)\Steam).
+2: Select default 32-bit system Steam library location (C:\Program Files\Steam).
+3: Enter your own custom Steam library location.
+Q: Quit.
+1
+Unpacking 000000001's assets...
+Done.
+```
+
 This is useful because unpacking a mod and learning how it works by looking at it's files is a great way to learn Starbound modding.
 
 If given more than one argument, the script only recognizes the first, and therefore doesn't change it's behavior.
@@ -80,7 +97,18 @@ Given no arguments and the `-u` option *(.sh)* or `/u` switch *(.bat)*, the scri
 
 Given any or no arguments and the `-p` option *(.sh)*, the script will prompt the user with a list of all Steam library directories within their home directory which they must choose from by pressing the corrosponding key. After the prompt the script will continue as normal.
 
-Example:
+Examples:
+```
+$ ./unpack-assets.sh -p
+Searching for Steam library directories within your home directory...
+1: /home/user/.wineprefixes/steam64/drive_c/Program Files (x86)/Steam
+2: /home/user/.PlayOnLinux/wineprefix/Steam64/drive_c/Program Files (x86)/Steam
+3: /home/user/.PlayOnLinux/wineprefix/Steam/drive_c/Program Files/Steam
+4: /home/user/.local/share/Steam
+4
+Unpacking Starbound's assets...
+Done.
+```
 ```
 $ ./unpack-assets.sh -p 000000001
 Searching for Steam library directories within your home directory...
@@ -91,6 +119,22 @@ Searching for Steam library directories within your home directory...
 4
 Unpacking 000000001's assets...
 Done.
+```
+```
+$ ./unpack-assets.sh -pa
+Searching for Steam library directories within your home directory...
+1: /home/user/.wineprefixes/steam64/drive_c/Program Files (x86)/Steam
+2: /home/user/.PlayOnLinux/wineprefix/Steam64/drive_c/Program Files (x86)/Steam
+3: /home/user/.PlayOnLinux/wineprefix/Steam/drive_c/Program Files/Steam
+4: /home/user/.local/share/Steam
+4
+Unpacking 000000001's assets...
+Done.
+Unpacking 000000002's assets...
+Done.
+Unpacking 000000003's assets...
+Done.
+Finished unpacking 3 mod(s).
 ```
 
 This is useful in the instance when the user has a Steam library directory other than the default that they have Starbound installed to.
