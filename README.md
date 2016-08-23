@@ -101,33 +101,30 @@ Examples:
 ```
 $ ./unpack-assets.sh -p
 Searching for Steam library directories within your home directory...
-1: /home/user/.wineprefixes/steam64/drive_c/Program Files (x86)/Steam
-2: /home/user/.PlayOnLinux/wineprefix/Steam64/drive_c/Program Files (x86)/Steam
-3: /home/user/.PlayOnLinux/wineprefix/Steam/drive_c/Program Files/Steam
-4: /home/user/.local/share/Steam
-4
+1: /home/user/.PlayOnLinux/wineprefix/Steam64/drive_c/Program Files (x86)/Steam
+2: /home/user/.PlayOnLinux/wineprefix/Steam/drive_c/Program Files/Steam
+3: /home/user/.local/share/Steam
+3
 Unpacking Starbound's assets...
 Done.
 ```
 ```
 $ ./unpack-assets.sh -p 000000001
 Searching for Steam library directories within your home directory...
-1: /home/user/.wineprefixes/steam64/drive_c/Program Files (x86)/Steam
-2: /home/user/.PlayOnLinux/wineprefix/Steam64/drive_c/Program Files (x86)/Steam
-3: /home/user/.PlayOnLinux/wineprefix/Steam/drive_c/Program Files/Steam
-4: /home/user/.local/share/Steam
-4
+1: /home/user/.PlayOnLinux/wineprefix/Steam64/drive_c/Program Files (x86)/Steam
+2: /home/user/.PlayOnLinux/wineprefix/Steam/drive_c/Program Files/Steam
+3: /home/user/.local/share/Steam
+3
 Unpacking 000000001's assets...
 Done.
 ```
 ```
 $ ./unpack-assets.sh -pa
 Searching for Steam library directories within your home directory...
-1: /home/user/.wineprefixes/steam64/drive_c/Program Files (x86)/Steam
-2: /home/user/.PlayOnLinux/wineprefix/Steam64/drive_c/Program Files (x86)/Steam
-3: /home/user/.PlayOnLinux/wineprefix/Steam/drive_c/Program Files/Steam
-4: /home/user/.local/share/Steam
-4
+1: /home/user/.PlayOnLinux/wineprefix/Steam64/drive_c/Program Files (x86)/Steam
+2: /home/user/.PlayOnLinux/wineprefix/Steam/drive_c/Program Files/Steam
+3: /home/user/.local/share/Steam
+3
 Unpacking 000000001's assets...
 Done.
 Unpacking 000000002's assets...
