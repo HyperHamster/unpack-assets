@@ -103,7 +103,7 @@ echo Unpacks Starbound assets.
 echo.
 echo unpack-assets.bat [/a] [workshop_id]
 echo.
-echo   /a    Unpack *ALL* Starbound Steam workshop assets.
+echo   /a    Unpack all Starbound Steam workshop assets.
 echo   /u    Unpack Starbound - Unstable^'s base assets instead.
 echo.
 echo Given no arguments, unpacks Starbound^'s base assets.

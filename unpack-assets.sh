@@ -9,11 +9,12 @@ while getopts ":haHAuUpP" opt; do
     esac
 done
 
+shift $((OPTIND - 1))
+
 if [[ ! -d "$HOME/.local/share/Steam" || $pflag -eq 1 ]]; then
-    echo "Default Steam Library directory not present on your system."
-    echo "Searching for Steam Library directories within your home directory..."
-    
     if [[ -e /tmp/unpack-assets.tmp ]]; then rm '/tmp/unpack-assets.tmp'; fi
+    
+    echo "Searching for Steam library directories within your home directory..."
     
     while IFS= read -r -d ''; do
         proper_dir=$(sed s_/steamapps.*__ < <(echo "$REPLY"))
@@ -22,17 +23,17 @@ if [[ ! -d "$HOME/.local/share/Steam" || $pflag -eq 1 ]]; then
     done < <(find $HOME -type d -path '*/steamapps' -print0 2>/dev/null)
     
     if [[ ! -e /tmp/unpack-assets.tmp ]]; then
-        echo "No Steam Libraries exist within your home directory."
+        echo "No Steam libraries exist within your home directory."
         exit 1
     fi
     
     num_finds="$(wc -l < /tmp/unpack-assets.tmp)"
     
-    echo "Choose the appropriate Steam library directory by pressing the corresponding key."
     cat -n '/tmp/unpack-assets.tmp' | sed -e 's/     //' -e 's/	/: /'
     
     while read -r -n 1 -s choice; do
         if [[ $choice =~ [[:digit:]] && $choice -gt 0 && $choice -le $num_finds ]]; then
+            echo $choice
             steam_library="$(sed "${choice}q;d" /tmp/unpack-assets.tmp)"
             break
         fi
