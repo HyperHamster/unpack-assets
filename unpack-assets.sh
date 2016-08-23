@@ -1,6 +1,14 @@
 #!/bin/bash
 
-if [[ ! -d "$HOME/.local/share/Steam" ]]; then
+while getopts ":haHAuU" opt; do
+    case $opt in
+        h|H) hflag=1;;
+        a|A) aflag=1;;
+        u|U) uflag=1;;
+    esac
+done
+
+if [[ ! -d "$HOME/.local/share/Steam" || ]]; then
     echo "Default Steam Library directory not present on your system."
     echo "Searching for Steam Library directories within your home directory..."
     
@@ -36,15 +44,7 @@ else
     steam_library="$HOME/.local/share/Steam"
 fi
 
-while getopts ":haHAuU" opt; do
-    case $opt in
-        h|H) hflag=1;;
-        a|A) aflag=1;;
-        u|U) uflag=1;;
-    esac
-done
-
-if [[ uflag -eq 1 ]]; then
+if [[ $uflag -eq 1 ]]; then
     starbound="$steam_library/steamapps/common/Starbound - Unstable"
 else
     starbound="$steam_library/steamapps/common/Starbound"
@@ -112,17 +112,18 @@ print_help() {
     echo "Unpacks Starbound assets."
     echo
     echo "Options:"
-    echo " -h, --help  Print this help and exit."
-    echo " -a, --all   Unpack *ALL* Starbound Steam Workshop assets."
+    echo " -h  Print this help screen and exit."
+    echo " -a  Unpack *ALL* Starbound Steam workshop assets."
+    echo " -u  Unpacks Starbound - Unstable's base assets instead."
     echo
-    echo "Given no arguments, unpacks Starbound's assets."
-    echo "Given one argument that is an installed Starbound Steam Workshop ID, unpacks its assets."
+    echo "Given no arguments, unpacks Starbound's base assets."
+    echo "Given one argument that is an installed Starbound Steam workshop mod ID, unpacks its assets."
     echo "Given the -a option, unpacks *ALL* Starbound Steam Workshop assets."
     exit 0
 }
 
 if [[ $hflag -eq 1 ]]; then print_help; fi
-if [[ $# -eq 0 || uflag -eq 1 ]]; then unpack_starbound; fi
+if [[ $# -eq 0 || $uflag -eq 1 ]]; then unpack_starbound; fi
 if [[ $aflag -eq 1 ]]; then unpack_workshop_all; fi
 unpack_workshop $1
 exit 0
