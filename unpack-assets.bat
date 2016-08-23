@@ -107,7 +107,6 @@ echo   /a    Unpack *ALL* Starbound Steam workshop assets.
 echo   /u    Unpack Starbound - Unstable^'s base assets instead.
 echo.
 echo Given no arguments, unpacks Starbound^'s base assets.
-echo Given one argument that is an installed Starbound Steam workshop mod ID, unpacks its assets.
-echo Given the /a switch, unpacks *ALL* Starbound Steam Workshop assets.
+echo Given an argument that is an installed Starbound Steam workshop mod ID, unpacks its assets.
 
 :end
