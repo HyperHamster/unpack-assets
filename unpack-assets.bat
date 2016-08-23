@@ -18,26 +18,26 @@ echo Q: Quit.
 choice /c:Q123K /n
 
 if "%errorlevel%"=="1" goto :end
-if "%errorlevel%"=="2" set steam_library=C:\Program Files ^(x86^)\Steam&& goto :begin
-if "%errorlevel%"=="3" set steam_library=C:\Program Files\Steam&& goto :begin
+if "%errorlevel%"=="2" set "steam_library=C:\Program Files (x86)\Steam"&& goto :begin
+if "%errorlevel%"=="3" set "steam_library=C:\Program Files\Steam"&& goto :begin
 if "%errorlevel%"=="4" goto :prompt
-if "%errorlevel%"=="5" set steam_library=D:\Windows\Steam Games&& goto :begin
+if "%errorlevel%"=="5" set "steam_library=D:\Windows\Steam Games"&& goto :begin
 
 :prompt
 
-set /p user_input=Specify your Steam Library location: 
-set steam_library=%user_input%
+set /p "user_input=Specify your Steam Library location: "
+set "steam_library=%user_input%"
 
 :begin
 
 if "%uflag%"=="1" (
-    set starbound=%steam_library%\steamapps\common\Starbound - Unstable
+    set "starbound=%steam_library%\steamapps\common\Starbound - Unstable"
 ) else (
-    set starbound=%steam_library%\steamapps\common\Starbound
+    set "starbound=%steam_library%\steamapps\common\Starbound"
 )
-set starbound_workshop=%steam_library%\steamapps\workshop\content\211820
-set unpack=%starbound%\win32\asset_unpacker.exe
-set starbound_assets=%starbound%\assets\packed.pak
+set "starbound_workshop=%steam_library%\steamapps\workshop\content\211820"
+set "unpack=%starbound%\win32\asset_unpacker.exe"
+set "starbound_assets=%starbound%\assets\packed.pak"
 
 goto %mode%
 
@@ -62,20 +62,20 @@ goto :end
 
 :unpack_workshop
 
-if exist "%starbound_workshop%\%1" (
-    if exist "%starbound%\mods\%1" (
-        echo Removing %1^'s old unpacked assets...
-        rd /s /q "%starbound%\mods\%1"
+if exist "%starbound_workshop%\%~1" (
+    if exist "%starbound%\mods\%~1" (
+        echo Removing %~1^'s old unpacked assets...
+        rd /s /q "%starbound%\mods\%~1"
         echo Done.
     )
     
-    echo Unpacking %1^'s assets...
-    "%unpack%" "%starbound_workshop%\%1\contents.pak" "%starbound%\mods\%1" >nul
+    echo Unpacking %~1^'s assets...
+    "%unpack%" "%starbound_workshop%\%~1\contents.pak" "%starbound%\mods\%~1" >nul
     echo Done.
     goto :end
 )
 
-echo %1^'s assets not found.
+echo %~1^'s assets not found.
 pause
 goto :end
 
@@ -85,15 +85,7 @@ set num_loops=0
 for /f %%g in ('dir /b /a:d "%starbound_workshop%"') do (
     set /a "num_loops+=1"
     
-    if exist "%starbound%\mods\%%g" (
-        echo Removing %%g^'s old unpacked assets...
-        rd /s /q "%starbound%\mods\%%g"
-        echo Done.
-    )
-    
-    echo Unpacking %%g^'s assets...
-    "%unpack%" "%starbound_workshop%\%%g\contents.pak" "%starbound%\mods\%%g" >nul
-    echo Done.
+    call :unpack_workshop %%g
 )
 
 if "%num_loops%"=="0" (
@@ -112,9 +104,9 @@ echo.
 echo unpack-assets.bat [/a] [workshop_id]
 echo.
 echo   /a    Unpack *ALL* Starbound Steam workshop assets.
-echo   /u    Unpack Starbound - Unstable's base assets instead.
+echo   /u    Unpack Starbound - Unstable^'s base assets instead.
 echo.
-echo Given no arguments, unpacks Starbound's base assets.
+echo Given no arguments, unpacks Starbound^'s base assets.
 echo Given one argument that is an installed Starbound Steam workshop mod ID, unpacks its assets.
 echo Given the /a switch, unpacks *ALL* Starbound Steam Workshop assets.
 
