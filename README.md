@@ -1,12 +1,12 @@
-#unpack-assets
+# unpack-assets
 
 This shell script is designed to ease and speed up the unpacking of Starbound assets *(.pak files)*.
 
 Especially so for servers, since Starbound requires you to unpack every single workshop mod to your local mods folder for them to actually load. Using this script, accomplishing that task [only requires a single command](https://github.com/HyperHamster/unpack-assets#-a--a).
 
-###Usage
+### Usage
 
-#####Default Behavior
+##### Default Behavior
 
 Given no arguments, the script simply unpacks Starbound's base assets located at `Starbound/assets/packed.pak` to `Starbound/_UnpackedAssets`. If the script finds that the assets have been unpacked previously, it will delete the older version before unpacking.
 
@@ -29,7 +29,7 @@ Done.
 
 This is useful for Starbound modding which requires an up-to-date unpacked version of Starbound's base assets. Especially for those developing mods for the [nightly and unstable builds of Starbound](https://github.com/HyperHamster/unpack-assets#-u--u).
 
-#####Argumental Behavior
+##### Argumental Behavior
 
 Given an argument, the script assumes that the argument is a Starbound Steam workshop mod ID. It then looks within Starbound's Steam workshop directory, finds that mod's assets, and unpacks them to `Starbound/mods/(mod ID)`. If the script finds that the assets have been unpacked previously, it will delete the older version before unpacking.
 
@@ -54,9 +54,9 @@ This is useful because unpacking a mod and learning how it works by looking at i
 
 If given more than one argument, the script only recognizes the first, and therefore doesn't change it's behavior.
 
-###Options & Switches
+### Options & Switches
 
-#####-A & /A
+##### -A & /A
 
 Given no arguments and the `-a` option *(.sh)* or `/a` switch *(.bat)*, the script will operate similarly to its [argumental behavior](https://github.com/HyperHamster/unpack-assets#argumental-behavior) except instead of unpacking a specific mod it will unpack *all* within Starbound's workshop directory.
 
@@ -142,7 +142,7 @@ This behavior, although less advanced, is default in the Batch version. Therefor
 
 Given the `-h` option *(.sh)* or `/?` switch *(.bat)*, the script will print a help screen relevant to the script version *(Bash or Batch)* and exit.
 
-###Note on Differences Between Bash and Batch Versions
+### Note on Differences Between Bash and Batch Versions
 
 Since Batch is an old and decrepit scripting language it must prompt the user each time asking where their Steam library directory is located since no functionality exists to find it automatically and it's not in a reliably predicatable location because of the differences in Steam's default installation directory between 32-bit and 64-bit versions of Windows.
 
